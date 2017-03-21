@@ -7,11 +7,11 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: seafood_development
+  database: race_development
   pool: 5
   timeout: 5000
   username: root
-  password: code
+  password: 123456
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,11 +20,11 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: seafood_test
+  database: race_test
   pool: 5
   timeout: 5000
   username: root
-  password: code
+  password: 123456
 
 # production:
 #   adapter: sqlite3

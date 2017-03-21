@@ -1,0 +1,424 @@
+<style type="text/css">
+  .aa{
+    margin-left: 15px;
+  }
+</style>
+
+<%= form_tag regists_path ,validate: true do %>
+
+  <div class="col-xs-5" style="margin-top: 20px">  <label class="control-label">导师信息填写</label> </div>
+
+  <div class="modal-body">
+
+    <div class="col-xs-10">
+
+      <div class="form-group">
+        <label class="control-label">姓名<span class="required-star">*</span></label>
+        <div class="clearfix">
+          <%= text_field_tag '[mentor][name]', '', class: "col-xs-2" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">性别<span class="required-star">*</span></label>
+          <%= select('mentor', 'gender', Mentor.gender_options, {include_blank: '请选择性别'}, class: "col-xs-５") %>
+          &nbsp;&nbsp;
+          <label class="control-label">国籍<span class="required-star">*</span></label>
+          <%= select( 'mentor', 'nation', Mentor.nation_options, {include_blank: '请选择国籍'}, class: "col-xs-５") %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">证件类型<span class="required-star">*</span></label>
+          <%= select( 'mentor','id_type', Mentor.id_type_options, {include_blank: '请选择证件类型'}, class: "col-xs-５") %>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">证件号码<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[mentor][id_number]', '', class: "col-xs-4" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">手机<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[mentor][mobile]', '', class: "col-xs-4" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">邮箱<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[mentor][email]', '', class: "col-xs-4" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">所在省市<span class="required-star">*</span></label>
+        <div class="clearfix">
+          <%= select( 'mentor','province_id', Province.all.map{|m| [m.name,m.id]}, {include_blank: '请选择省份'}, class: "col-xs-2") %>
+          <%= select( 'mentor','city_id', City.all.map{|m| [m.name,m.id]}, {include_blank: '请选择城市'}, class: "col-xs-2") %>
+          <%= select( 'mentor','district_id', District.all.map{|m| [m.name,m.id]}, {include_blank: '请选择地区'}, class: "col-xs-2")%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">工作单位<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[mentor][work_unit]', '' ,class: "col-xs-5" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">座机<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[mentor][telephone]', '',class: "col-xs-5" %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="col-xs-5" style="margin-top: 20px">  <label class="control-label">学员信息填写(一)</label> </div>
+  <div class="modal-body">
+    <div class="col-xs-10">
+
+      <div class="form-group">
+        <label class="control-label">姓名<span class="required-star">*</span></label>
+        <div class="clearfix">
+          <%= text_field_tag '[student_a][name]', '',class: "col-xs-2" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">性别<span class="required-star">*</span></label>
+          <%= select( 'student_a','gender', Mentor.gender_options, {include_blank: '请选择性别'}, class: "col-xs-５") %>
+
+          <label class="control-label">国籍<span class="required-star">*</span></label>
+          <%= select( 'student_a','nation', Mentor.nation_options, {include_blank: '请选择国籍'}, class: "col-xs-５") %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">证件类型<span class="required-star">*</span></label>
+          <%= select( 'student_a','id_type', Mentor.id_type_options, {include_blank: '请选择证件类型'}, class: "col-xs-５") %>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">证件号码<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_a][id_number]', '', class: "col-xs-4" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">手机<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_a][mobile]', '', class: "col-xs-4" %>
+          </div>
+        </div class="clearfix">
+        <div>
+          <label class="control-label">邮箱<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_a][email]', '', class: "col-xs-4" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">所在省市<span class="required-star">*</span></label>
+        <div class="clearfix">
+          <%= select( 'student_a','province_id', Province.all.map{|m| [m.name,m.id]}, {include_blank: '请选择省份'}, class: "col-xs-2") %>
+          <%= select( 'student_a','city_id', City.all.map{|m| [m.name,m.id]}, {include_blank: '请选择城市'}, class: "col-xs-2") %>
+          <%= select( 'student_a','district_id', District.all.map{|m| [m.name,m.id]}, {include_blank: '请选择地区'}, class: "col-xs-2")%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">学校<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_a][school]', '', class: "col-xs-6" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">年级<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_a][grade]', '',class: "col-xs-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">监护人姓名<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_a][guardian_name]', '', class: "col-xs-6" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">所属关系<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_a][guardianship]', '', class: "col-xs-6" %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+
+  <div class="col-xs-5" style="margin-top: 20px">  <label class="control-label">学员信息填写(二)</label> </div>
+  <div class="modal-body">
+    <div class="col-xs-10">
+
+      <div class="form-group">
+        <label class="control-label">姓名<span class="required-star">*</span></label>
+        <div class="clearfix">
+          <%= text_field_tag '[student_b][name]', '',class: "col-xs-2" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">性别<span class="required-star">*</span></label>
+          <%= select( 'student_b','gender', Mentor.gender_options, {include_blank: '请选择性别'}, class: "col-xs-５") %>
+
+          <label class="control-label">国籍<span class="required-star">*</span></label>
+          <%= select( 'student_b','nation', Mentor.nation_options, {include_blank: '请选择国籍'}, class: "col-xs-５") %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">证件类型<span class="required-star">*</span></label>
+          <%= select( 'student_b','id_type', Mentor.id_type_options, {include_blank: '请选择证件类型'}, class: "col-xs-５") %>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">证件号码<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_b][id_number]', '', class: "col-xs-4" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">手机<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_b][mobile]', '', class: "col-xs-4" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">邮箱<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_b][email]', '', class: "col-xs-4" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">所在省市<span class="required-star">*</span></label>
+        <div class="clearfix">
+          <%= select( 'student_b','province_id', Province.all.map{|m| [m.name,m.id]}, {include_blank: '请选择省份'}, class: "col-xs-2") %>
+          <%= select( 'student_b','city_id', City.all.map{|m| [m.name,m.id]}, {include_blank: '请选择城市'}, class: "col-xs-2") %>
+          <%= select( 'student_b','district_id', District.all.map{|m| [m.name,m.id]}, {include_blank: '请选择地区'}, class: "col-xs-2") %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">学校<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_b][school]', '',class: "col-xs-6" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">年级<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_b][grade]', '',class: "col-xs-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="clearfix">
+          <label class="control-label">监护人姓名<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_b][guardian_name]', '',class: "col-xs-6" %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <label class="control-label">所属关系<span class="required-star">*</span></label>
+          <div class="clearfix">
+            <%= text_field_tag '[student_b][guardianship]', '',class: "col-xs-6" %>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-sm btn-primary form-submit" data-fn="submit">确定</button>
+        <button type="button" class="btn btn-sm btn-default" data-dismiss="modals">取消</button>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  function refreshCityOptions(province_id) {
+        $.ajax({
+          url: "/cities",
+          data: { "province_id": province_id },
+          dataType: 'json',
+          success: function(result){
+            var options = $("#mentor_city_id");
+            options.empty(); // remove old options
+
+            options.append($("<option></option>").attr("value", '').text('请选择城市'));
+
+            $.each(result, function(index, option) {
+              options.append($("<option></option>")
+                .attr("value", option.id).text(option.name));
+            });
+          }
+        });
+      }
+
+  function refreshDistrictOptions(city_id) {
+        $.ajax({
+          url: "/districts",
+          data: { "city_id": city_id },
+          dataType: 'json',
+          success: function(result){
+            var options = $("#mentor_district_id");
+            options.empty(); // remove old options
+
+            options.append($("<option></option>").attr("value", '').text('请选择地区'));
+
+            $.each(result, function(index, option) {
+              options.append($("<option></option>")
+                .attr("value", option.id).text(option.name));
+            });
+          }
+        });
+      }
+
+  function listCityOptions(province_id) {
+        $.ajax({
+          url: "/cities",
+          data: { "province_id": province_id },
+          dataType: 'json',
+          success: function(result){
+            var options = $("#student_a_city_id");
+            options.empty(); // remove old options
+
+            options.append($("<option></option>").attr("value", '').text('请选择城市'));
+
+            $.each(result, function(index, option) {
+              options.append($("<option></option>")
+                .attr("value", option.id).text(option.name));
+            });
+          }
+        });
+      }
+
+    function listDistrictOptions(city_id) {
+          $.ajax({
+            url: "/districts",
+            data: { "city_id": city_id },
+            dataType: 'json',
+            success: function(result){
+              var options = $("#student_a_district_id");
+              options.empty(); // remove old options
+
+              options.append($("<option></option>").attr("value", '').text('请选择地区'));
+
+              $.each(result, function(index, option) {
+                options.append($("<option></option>")
+                  .attr("value", option.id).text(option.name));
+              });
+            }
+          });
+        }
+
+    function showCityOptions(province_id) {
+          $.ajax({
+            url: "/cities",
+            data: { "province_id": province_id },
+            dataType: 'json',
+            success: function(result){
+              var options = $("#student_b_city_id");
+              options.empty(); // remove old options
+
+              options.append($("<option></option>").attr("value", '').text('请选择城市'));
+
+              $.each(result, function(index, option) {
+                options.append($("<option></option>")
+                  .attr("value", option.id).text(option.name));
+              });
+            }
+          });
+        }
+
+    function showDistrictOptions(city_id) {
+          $.ajax({
+            url: "/districts",
+            data: { "city_id": city_id },
+            dataType: 'json',
+            success: function(result){
+              var options = $("#student_b_district_id");
+              options.empty(); // remove old options
+
+              options.append($("<option></option>").attr("value", '').text('请选择地区'));
+
+              $.each(result, function(index, option) {
+                options.append($("<option></option>")
+                  .attr("value", option.id).text(option.name));
+              });
+            }
+          });
+        }
+
+    $("#mentor_province_id").on('change', function(e){
+      var province_id = $(this).val();
+
+      refreshCityOptions(province_id);
+    });
+    $("#mentor_city_id").on('change', function(e){
+      var city_id = $(this).val();
+
+      refreshDistrictOptions(city_id);
+    });
+    $("#student_a_province_id").on('change', function(e){
+      var province_id = $(this).val();
+
+      listCityOptions(province_id);
+    });
+    $("#student_a_city_id").on('change', function(e){
+      var city_id = $(this).val();
+
+      listDistrictOptions(city_id);
+    });
+
+    $("#student_b_province_id").on('change', function(e){
+      var province_id = $(this).val();
+
+      showCityOptions(province_id);
+    });
+    $("#student_b_city_id").on('change', function(e){
+      var city_id = $(this).val();
+
+      showDistrictOptions(city_id);
+    });
+</script>

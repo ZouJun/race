@@ -42,7 +42,6 @@
 
 .session_body {
     height: auto;
-    background: url(/login.png);
 }
 
 .session {
@@ -56,7 +55,7 @@
     padding-left: 35px
 }
 .admin_staff_top {
-    padding-top: 20px 
+    padding-top: 20px
 }
 .select_css {
     width: 240px;

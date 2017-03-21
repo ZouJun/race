@@ -5,7 +5,7 @@ class Admin::BaseController < ApplicationController
 
   private
   def require_staff
-      if session[:staff_id]
+      if session[:admin_id]
          return true
       else
         redirect_to sign_in_url, notice: '请登录'

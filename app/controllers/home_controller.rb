@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
 
 	def index
-		if session[:staff_id]
+		if session[:admin_id]
 			redirect_to admin_home_path
 		else
-			redirect_to sign_in_path
+			redirect_to regists_path
 		end
 	end
 end

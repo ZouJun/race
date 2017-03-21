@@ -4,22 +4,31 @@
       <ul class="nav nav-pills nav-stacked" role="tablist">
 
          <li role="presentation" class="<%= parent_class if current_page?(admin_staffs_path) %>">
-         <a href="#staff" class="nav-header collapse" data-toggle="collapse"><i class="glyphicon glyphicon-user"></i>&nbsp员工管理</a> </li>
+         <a href="#staff" class="nav-header collapse" data-toggle="collapse"><i class="glyphicon glyphicon-user"></i>&nbsp人员管理</a> </li>
           <ul id="staff" class="nav nav-list collapse">
-            <% if can?(1)%>
+            <%# if can?(1)%>
               <li role="presentation" class="<%= parent_class if current_page?(admin_staffs_path) %>">
-              <a href="<%= admin_staffs_path %>" style="padding-left: 30px;">员工列表</a></li>
-            <% end %>
-            <% if can?(2)%>
-              <li role="presentation" class="<%= parent_class if current_page?(admin_staff_transfers_path) %>">
-              <a id="staff-manager" href="<%= admin_staff_transfers_path %>" style="padding-left: 30px;">部门(仓库)调动</a></li>
-            <% end %>
+                <a href="<%= admin_mentors_path %>" style="padding-left: 30px;">导师列表</a>
+              </li>
+            <%# end %>
+            <li role="presentation" class="<%= parent_class if current_page?(admin_staffs_path) %>">
+              <a href="<%= admin_students_path %>" style="padding-left: 30px;">学员列表</a>
+            </li>
+
           </ul>
 
-        <li role="presentation" class="<%= parent_class if current_page?(admin_roles_path) %>"><a href="<%= admin_roles_path %>" class="nav-header <%= parent_class if current_page?(admin_roles_path) %>"><i class="glyphicon glyphicon-tasks"></i>&nbsp角色管理</a> </li>
-          
+        <li role="activity" class="<%= parent_class if current_page?(admin_activities_path) %>">
+          <a href="#" class="nav-header collapse%>" data-toggle="collapse">
+            <i class="glyphicon glyphicon-tasks"></i>&nbsp活动确认表
+          </a>
+        </li>
+
+        <li role="activity" class="<%= parent_class if current_page?(admin_activities_path) %>">
+          <a href="#" class="nav-header collapse%>" data-toggle="collapse">
+            <i class="glyphicon glyphicon-tasks"></i>&nbsp活动说明表
+          </a>
+        </li>
       </ul>
   </div>
 
 </div>
-

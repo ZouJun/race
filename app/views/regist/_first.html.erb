@@ -21,25 +21,21 @@
           <!--</ul>-->
         <!--</li>-->
       <!--</ul>-->
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-head" role="search">
         <div class="form-group">
           <!--<input type="text" class="form-control" placeholder="Search">-->
+          <ul class="nav navbar-nav navbar-center">
+            <li><%= link_to '注册', get_declare_regist_index_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-center">
+            <li><%= link_to '修改' %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-center">
+            <li><%= link_to '活动确认' %></li>
+          </ul>
         </div>
         <!--<button type="submit" class="btn btn-default"></button>-->
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="#">Link</a></li>-->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_staff.name%> <span class="caret"></span></a>
-          <div id="tip"></div>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="<%= edit_admin_password_path(current_staff)%>">修改密码</a></li>
-            <!--<li><a href="#">消息通知</a></li>-->
-            <li class="divider"></li>
-            <li><%= link_to '退出', sign_up_path, data: {confirm: '确定退出？'}%></li>
-          </ul>
-        </li>
-      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

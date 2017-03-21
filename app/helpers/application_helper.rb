@@ -1,16 +1,17 @@
 module ApplicationHelper
 
   def can?(ids)
-    permission_ids = []
-    current_staff.role.role_permission_maps.each do |t|
-      permission_ids.push(t.permission.id)
-    end 
-
-    if permission_ids.include?(ids)
-      true
-    else
-      false
-    end
+    # permission_ids = []
+    # current_staff.role.role_permission_maps.each do |t|
+    #   permission_ids.push(t.permission.id)
+    # end
+    #
+    # if permission_ids.include?(ids)
+    #   true
+    # else
+    #   false
+    # end
+    return true
   end
 
   def page_can?
@@ -41,8 +42,8 @@ module ApplicationHelper
   end
 
   def current_staff
-    if session[:staff_id]
-      return Staff.find(session[:staff_id])
+    if session[:admin_id]
+      return Admin.find(session[:admin_id])
     else
       redirect_to sign_in_url, notice: '请登录'
     end
